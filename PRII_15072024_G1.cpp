@@ -102,29 +102,33 @@ public:
 		return *this;
 	}
 
-	Kolekcija<T1,T2,max>* RemoveRange(int pocetak, int kraj) {
+	Kolekcija<T1, T2, max>* RemoveRange(int pocetak, int kraj) {
 
-		int size = kraj - pocetak;
+	int size = kraj - pocetak + 1; 
 
-		Kolekcija<T1,T2,max>* nova = new Kolekcija<T1,T2,max>();
+	Kolekcija<T1, T2, max>* nova = new Kolekcija<T1, T2, max>();
 
-		for (size_t i = pocetak; i <= kraj; i++)
-		{
+	
+	for (size_t i = pocetak; i <= kraj; i++) {
+		if (_elementi1[i] != nullptr && _elementi2[i] != nullptr) {
 			nova->AddElement(*_elementi1[i], *_elementi2[i]);
 		}
-
-		int k = 0;
-		for (size_t i = pocetak; i < (*_trenutno)-size; i++)
-		{
-			_elementi1[i] = _elementi1[kraj + k];
-			_elementi2[i] = _elementi2[kraj + k];
-			k++;
-		}
-
-		(*_trenutno) = *_trenutno - size;
-
-		return nova;
 	}
+	for (size_t i = pocetak; i <= kraj; i++){
+		_elementi1[i] = nullptr;
+		_elementi2[i] = nullptr;
+	}
+	
+	for (size_t i = kraj + 1; i < (*_trenutno); i++) {
+		_elementi1[i - size] = _elementi1[i];
+		_elementi2[i - size] = _elementi2[i];
+
+		_elementi1[i] = nullptr;
+		_elementi2[i] = nullptr;
+	}
+	(*_trenutno) -= size;
+	return nova;
+}
 	
 	Kolekcija& operator=(const Kolekcija& obj) {
 		if (this != &obj) {
