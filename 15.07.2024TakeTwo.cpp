@@ -259,7 +259,7 @@ public:
 	char* GetID() { return _ID; }
 	std::vector<Pogodak>& GetPogoci() { return _pogoci; }
 
-	bool operator==(const Igrac& obj) { return(strcmp(_ID, obj._ID) == 0); }//Ime i prezime teoretski moze biti isto ali ID ne moze? :) 
+	bool operator==(const Igrac& obj) const { return(strcmp(_ID, obj._ID) == 0); }//Ime i prezime teoretski moze biti isto ali ID ne moze? :) 
 
 	Igrac& operator=(const Igrac& obj) {
 		if(this!=&obj){
