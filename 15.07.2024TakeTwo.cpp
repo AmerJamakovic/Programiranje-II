@@ -27,7 +27,7 @@ char* GetNizKaraktera(const char* sadrzaj, bool dealociraj = false) {
 	return temp;
 }
 
-bool ValidirajID(const char* ID) { return std::regex_match(ID, std::regex("ID#(000-[1-9]{1}|00-[1-9]{2}|0-[1-9]{3}|[1-9]{4})")); }
+bool ValidirajID(const char* ID) { return std::regex_match(ID, std::regex("ID#(000-[1-9]{1}|00-[1-9]{1}[0-9]{1}|0-[1-9]{1}[0-9]{2}|[1-9]{1}[0-9]{3})")); }
 
 char* GenerisiID(int broj) {
 	std::ostringstream manipulator;
