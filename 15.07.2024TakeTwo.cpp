@@ -170,9 +170,9 @@ public:
 	}
 
 	int toInt() const {return *_sekunda + (*_minuta) * 6 + (*_sat) * 360;}
-	bool operator<(const Vrijeme& obj) { return toInt() < obj.toInt(); }
-	bool operator>(const Vrijeme& obj) { return toInt() > obj.toInt(); }
-	bool operator==(const Vrijeme& obj) { return toInt() == obj.toInt(); }
+	bool operator<(const Vrijeme& obj) const { return toInt() < obj.toInt(); }
+	bool operator>(const Vrijeme& obj) const { return toInt() > obj.toInt(); }
+	bool operator==(const Vrijeme& obj) const{ return toInt() == obj.toInt(); }
 
 	Vrijeme& operator=(const Vrijeme& obj) {
 		if (this != &obj) {
@@ -209,7 +209,7 @@ public:
 	Vrijeme GetVrijemePogotka() { return _vrijemePogotka; }
 	char* GetNapomena() { return _napomena; }
 
-	bool operator==(const Pogodak& obj) {
+	bool operator==(const Pogodak& obj) const {
 		if (strcmp(_napomena, obj._napomena) == 0
 			&& _vrijemePogotka == obj._vrijemePogotka)
 		{
