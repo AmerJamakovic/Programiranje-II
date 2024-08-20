@@ -252,8 +252,7 @@ public:
 	Igrac(const Igrac& obj) {
 		_imePrezime = GetNizKaraktera(obj._imePrezime);
 		_ID = GetNizKaraktera(obj._ID);
-		for (int i = 0; i < obj._pogoci.size(); i++)
-			_pogoci.push_back(obj._pogoci[i]);}
+		_pogoci=obj._pogoci;
 
 	char* GetImePrezime() { return _imePrezime; }
 	char* GetID() { return _ID; }
@@ -268,9 +267,7 @@ public:
 
 			_imePrezime = GetNizKaraktera(obj._imePrezime);
 			_ID = GetNizKaraktera(obj._ID);
-			_pogoci.clear();
-			for (int i = 0; i < obj._pogoci.size(); i++)
-				_pogoci.push_back(obj._pogoci[i]);}
+			_pogoci=obj._pogoci;
 		return *this;}
 
 	friend std::ostream& operator<< (std::ostream& COUT, Igrac& obj) {
